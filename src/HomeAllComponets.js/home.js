@@ -1,12 +1,36 @@
-import React from 'react'
-import NavBar from './nav';
 
+import React from 'react';
+import Carouselcomponent from './Carouselcomponent';
+import Catecory from './Catecory';
+import Categories from './Catecory';
+import'./home.css';
+import Homefooter from './Homefooter';
 
- function Home() {
+import Nev from './Nev';
+import Pictures from './Pictures';
+
+ function Home({locationDataFromApp}) {
     return (
-        <div className='home'>
-            <NavBar/>
+        <div>
+        <div className="homeMain">
+        <Nev locationFromHome={locationDataFromApp}/>
+    
+       
         </div>
+        <div>
+         <Catecory/>
+         </div>
+         <div>
+             <Carouselcomponent/>
+         </div>
+         <div>
+             <Pictures/>
+         </div>
+        
+         <div>
+        <Homefooter/>
+         </div>
+         </div>
     );
 }
 

@@ -1,5 +1,6 @@
-.home{
- background-image:url("https://res.cloudinary.com/urbanclap/image/upload/…ages/growth/home-screen/1615375782838-f890f8.jpeg");
-
-
+.homeMain{
+    background-image: url(https://res.cloudinary.com/urbanclap/image/upload/images/growth/home-screen/1615375782838-f890f8.jpeg);
+ height: 34rem;
+  background-size: cover;
 }
+
