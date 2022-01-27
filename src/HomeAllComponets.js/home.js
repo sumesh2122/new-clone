@@ -1,5 +1,6 @@
 
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Carouselcomponent from './Carouselcomponent';
 import Catecory from './Catecory';
 import Categories from './Catecory';
@@ -10,6 +11,7 @@ import Nev from './Nev';
 import Pictures from './Pictures';
 
  function Home({locationDataFromApp}) {
+     
     return (
         <div>
         <div className="homeMain">

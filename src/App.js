@@ -4,6 +4,14 @@ import {Row,Col} from "reactstrap"
 import Home from './HomeAllComponets.js/home';
 import {useState , useEffect} from 'react'
 import axios from'axios';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Details from './Details/Details';
 
 function App() {
   const[locationData, setLocationData] = useState([]);
@@ -41,10 +49,24 @@ useEffect(()=>{
         
     },[])
   return (
+    <Router>
     <div className="App">
-      <Home locationDataFromApp={locationObject}/>
-      {locationData}
+    <Switch>
+    <Route path='/' exact>
+    {locationData}
+          </Route>
+
+          <Route path='/home' exact>
+          <Home locationDataFromApp={locationObject}/>  
+          </Route>
+
+          <Route path='/details/:id' exact>
+         <Details/> 
+          </Route>
+          </Switch>
+      
     </div> 
+    </Router>
   );
 }
 
