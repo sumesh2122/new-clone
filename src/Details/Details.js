@@ -1,6 +1,7 @@
 import { Col } from 'antd';
 import React from 'react';
 import{Row,col} from 'reactstrap'
+
 import VerticalTabs from './Tab';
 function Details(props) {
     return (
@@ -8,6 +9,7 @@ function Details(props) {
         <Col >
         <Row>
             <VerticalTabs/>
+             
         </Row>
         </Col>
 

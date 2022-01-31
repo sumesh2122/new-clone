@@ -7,7 +7,7 @@ const { Meta } = Card;
 
 
 
-function Cardfile({ jobFromData, priceFromData, ratingFromData, detailsFromData }) {
+function Cardfile({ calcSet, jobFromData, priceFromData, ratingFromData, detailsFromData }) {
   return (
     <div>
       <Card
@@ -55,7 +55,7 @@ function Cardfile({ jobFromData, priceFromData, ratingFromData, detailsFromData 
     <Button type="" style={{display:"inline"}}>
     Add
     </Button>
-    <Button type="primary" style={{display:"inline"}}>
+    <Button onClick={()=>{calcSet(jobFromData,priceFromData,ratingFromData,detailsFromData)}} type="primary" style={{display:"inline"}}>
       +
     </Button>
     

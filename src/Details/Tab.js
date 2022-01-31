@@ -10,6 +10,7 @@ import { useState } from 'react';
 
 import Cardfile from './Cardfile';
 import { Row, Spin } from 'antd';
+import Footer from './Footer';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -49,6 +50,7 @@ export default function VerticalTabs() {
     const[cardContent,setCardContent]= useState([]);
     const [categoriesTotaldata,setcategoriesTotaldata]= useState([]);
     const[removeDups,setremoveDups] = useState([]);
+    const[calculator,setCalculator]=useState([]);
     useEffect(() => {
         let getData = async () => {
             let dataGot = await axios.get("https://rcz-backend-arvinth.herokuapp.com/api/getGenieRecordsByAllCategories")
@@ -73,6 +75,17 @@ export default function VerticalTabs() {
       getData();
 
     }, [])
+    const handledata=(jobFromData, priceFromData, ratingFromData, detailsFromData)=>{
+        let newobj=calculator;
+        if(newobj[jobFromData]){
+                       newobj[jobFromData] += parseInt(priceFromData)
+
+        }else{
+            newobj[jobFromData] = parseInt(priceFromData)
+        }
+        setCalculator(newobj);
+        console.log(calculator)  
+    }
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -104,15 +117,24 @@ export default function VerticalTabs() {
             </Tabs>
             <TabPanel value={value} index={0}>
                 {cardContent.map(s=>(
-                      <Cardfile jobFromData={s.job} priceFromData={s.price} ratingFromData={s.rating} detailsFromData={s.description}/>
+                      <Cardfile calcSet={handledata} jobFromData={s.job} priceFromData={s.price} ratingFromData={s.rating} detailsFromData={s.description}/>
                 ))}
             </TabPanel>
+            {/* <div style={{display:"flex",justifyContent:"end"}}>
+            <Footer calcView={calculater} listAddItems={"continue"}/></div> */}
           
-        </Box> : (<Row style={{height:"100vh",display:"flex",alignItems:"center",justifyContent:"center"}}>
+        </Box>
+        
+        
+        : (<Row style={{height:"100vh",display:"flex",alignItems:"center",justifyContent:"center"}}>
             <Spin/>
+
          </Row>)
-}
+  
+}<div style={{display:"flex",justifyContent:"end"}}>
+            <Footer calcView={handledata}  listAddItems={"continue"}/></div>
+
         </>
-                
+            
     );
 }
